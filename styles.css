@@ -1,0 +1,40 @@
+
+   ul {
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    list-style-type: none;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.5);
+    
+  }
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color:rgba(28, 41, 81, 0.858);
+  }
+  
+  #container2 {
+    width: 60%;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    background-image: url("img/background.jpg");
+    background-size: cover;
+    color: white;
+  }
+  
+  .container-wrapper {
+    display: flex;
+  }
+  
+  .container-wrapper > div {
+    flex: 4;
+  }
+  
+
