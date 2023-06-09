@@ -5,24 +5,45 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(data => {
       if (data.length > 0) {
         let html = '';
-
-        for (let i = 0; i < 6; i++) {
+  
+        for (let i = 0; i < 36; i++) {
           const objeto = data[i];
           const keys = Object.keys(objeto);
-
+  
           html += '<ul>';
           keys.forEach(key => {
-            html += `<li>${key}: ${objeto[key]}</li>`;
-          });
+          
+            if (key === 'name' || key === 'recclass' || key === 'mass' || key === 'year' || key === 'reclat' || key === 'reclong') 
+              if (key === 'year') {
+                console.log("nadadaa")
+                const value = objeto[key].slice(0, 10); // Obtener la fecha formateada
+                html += `<li>${key}: ${value}</li>`;
+              } else {
+                html += `<li>${key}: ${objeto[key]}</li>`;}
+              }
+            
+          )
+          html += `<img id="icono" src="img/meteorito.jpg">`
           html += '</ul>';
+        
+  
+        container.innerHTML = html;
 
           // Agregar marcadores al mapa
           const lat = parseFloat(objeto.reclat);
           const lon = parseFloat(objeto.reclong);
           const desc = objeto.name;
-
+          //
+          /*const eraser = {
+            latitud: lat,
+            longitud: lon
+          };
+          eraser.push(lat);
+          eraser.push(lon);
+          */
           const marker = L.marker([lat, lon]).addTo(map);
           marker.bindPopup(desc);
+          
           
         }
 
@@ -31,8 +52,13 @@ document.addEventListener('DOMContentLoaded', function() {
         searchButton.addEventListener('click', function() {
         const searchInput = document.getElementById('searchInput').value;
         const selectedOption = document.getElementById('selectOption').value;
+        if (searchInput.length== 0 ){ //Verifica busqueda
+          document.getElementById('searchInput').placeholder = "Introduce un parametro";
+        }else{
+          filter(data, searchInput, selectedOption);//Funcion de filtrado fuera del scope
+        }
         
-        filter(data, searchInput, selectedOption);//Funcion de filtrado fuera del scope
+        
         });
         
         
@@ -67,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('container');
     if (selectedOption ==='name'){
       for (let i = 0; i < data.length; i++) {
-      if (regex.test(data[i].name)) {
+        if (regex.test(data[i].name)) {
         filteredObjects.push(data[i]);
         container.innerHTML='';
       }
@@ -80,9 +106,13 @@ document.addEventListener('DOMContentLoaded', function() {
       
       html += '<ul>';
       keys.forEach(key => {
+        if (key === 'year') {
+          const value = objeto[key].slice(0, 10); // Obtener los primeros numeros
+          html += `<li>${key}: ${objeto[key]}</li>`;
+        } else {
       html += `<li>${key}: ${objeto[key]}</li>`;
-      });
-      
+      }});
+      html += `<img id="icono" src="img/meteorito.jpg">`
       html += '</ul>';
       container.innerHTML= html;// pinta la busqueda
       
@@ -93,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
 
       //Modo boton
+      
       const ulButon = container.getElementsByTagName('ul');
         Array.from(ulButon).forEach((ulElement, index) => {
           ulElement.addEventListener('click', () => {
@@ -109,11 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
    
   };
   
-  
-
-
-
-
 
 //Pinta en el escaparate la tarjeta clickada
 function contenido(objeto) {

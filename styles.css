@@ -1,26 +1,52 @@
 
+   body{
+    background-color: #bdbae2;
+   }
+   img{
+    border-radius: 4px;
+    
+   }
    ul {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
     border: 1px solid black;
     padding: 10px;
     margin-bottom: 10px;
     list-style-type: none;
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.5);
-    width: 30%;
-    height: 200px;
+    background-color: #84b7ebb3;
+    width: 150px;
+    height: 250px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    
     
   }
+  li {padding-bottom: 10px;}
 
+  button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
 #container {
     display: flex;
     flex-wrap: wrap;
     width: 40%;
-    height: 600px;
+    height: 660px;
     border: 1px solid black;
     padding: 10px;
     box-sizing: border-box;
     background-color:rgba(28, 41, 81, 0.858);
     overflow: auto;
+    
   }
   
   #container2 {
@@ -32,7 +58,7 @@
     box-sizing: border-box;
     background-image: url("img/background.jpg");
     background-size: cover;
-    color: white;
+    
     flex-direction: column;
   }
   
@@ -40,18 +66,57 @@
     display: flex;
   }
   
-  .container-wrapper > div {
+  .container-wrapper > section {
     flex: 10;
   }
-  
+  #nav{
+    display: flex;
+    background-color: rgb(64, 108, 202);
+    height: 40px;
+    align-content:last baseline;
+    
+  }
 
   #map { 
-    
-    order: 1;
+    align-content:end;    
+    order: -1;
     height: 50%; }
 
   #details {
-    order: -1;
+    font-size: 15px;
     height: 30%;
     width: 600px;
   }
+  #icono{
+    width: 40px;
+  }
+  #details > ul {
+    width: 500px;
+    height: 280px;
+  }
+  ul img {
+    align-self: baseline;
+  }
+  ul li:first-child {
+    font-size: 20px;
+    color: #322e5b;
+  }
+  select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #bef3b4;
+    color: #333;
+  }
+  
+  select:hover {
+    border-color: #3b7b42;
+    color: white;
+  }
+  
+  select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  
